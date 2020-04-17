@@ -1,8 +1,19 @@
-<html>
-    <head>
-        <title>{{ title }} - Microblog</title>
-    </head>
-    <body>
-        <h1>Hello, {{ user.username }}!</h1>
-    </body>
-</html>
+{% extends "base.html" %}
+
+{% block content %}
+<div class="main_block">
+    <div class="block" id="income">
+        INCOME
+    </div>
+    <div class="block" id="expense">
+        EXPENSE
+    </div>
+</div>
+{% for post in posts %}
+<div class="main"><p>{{ post.author.username }} says: <b>{{ post.body }}</b></p></div>
+{% endfor %}
+<script>
+  document.getElementById('income').addEventListener('click', function (event) {location.href = "http://127.0.0.1:5000/income";});
+  document.getElementById('expense').addEventListener('click', function (event) {location.href = "http://127.0.0.1:5000/expense";});
+</script>
+{% endblock %}

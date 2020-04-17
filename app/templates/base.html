@@ -1,17 +1,122 @@
 <html>
     <head>
-      {% if title %}
-      <title>{{ title }} - Microblog</title>
-      {% else %}
-      <title>Welcome to Microblog</title>
-      {% endif %}
+        <title>Home</title>
+        <style>
+            html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,textarea,p,blockquote,th,td{margin:0;padding:0;}table{border-collapse:collapse;border-spacing:0;}fieldset,img{border:0;}address,caption,cite,code,dfn,em,strong,th,var{font-style:normal;font-weight:normal;}li{list-style:none;}caption,th{text-align:left;}h1,h2,h3,h4,h5,h6{font-size:100%;font-weight:normal;}q:before,q:after{content:'';}abbr,acronym{border:0;font-variant:normal;}sup{vertical-align:text-top;}sub{vertical-align:text-bottom;}input,textarea,select{font-family:inherit;font-size:inherit;font-weight:inherit;}input,textarea,select{*font-size:100%;}legend{color:#000;}
+            #body{
+                margin: 0px 0px 0px 0px;
+                border: 0px 0px 0px 0px;
+            }
+            .text_1{
+                top: 30px;
+                position: fixed;
+                font-family: Arial, Helvetica, sans-serif;
+                margin-left: 50px;
+                font-size: 30px;
+            }
+            .top{
+                z-index: 90;
+                width: 100%;
+                height: 100px;
+                position: fixed;
+                background-color: tomato;
+                opacity: .8;
+            }
+            .to_left{
+                position: relative;
+                float: right;
+                font-size: 20px;
+                line-height: 100px;
+                color: white;
+                text-decoration: none;
+                padding-right: 100px;
+                font-family: Arial, Helvetica, sans-serif;
+            }
+            #date{
+                padding-top: 4px;
+                z-index: 100;
+                width: 100px;
+                height: 30px;
+                position: fixed;
+                font-family: Arial, Helvetica, sans-serif;
+                right: 30px;
+                top: 30px;
+                border-style: solid;
+                border-color: white;
+                border-radius: 10px;
+                line-height: 30px;
+                text-align: center;
+            }
+            .main_block{
+                text-align: center;
+                background-color:whitesmoke;
+                position: relative;
+                width: 100%;
+                height: 100%;
+                font-family: Arial, Helvetica, sans-serif;
+                opacity: .7;
+            }
+            .block{
+                margin-top: 25%;
+                margin-left: 25%;
+                background-color: whitesmoke;
+                color: black;
+                position: relative;
+                float: left;
+                width: 200px;
+                height: 200px;
+                line-height: 200px;
+                border-radius: 40px;
+                font-size: 30px;
+            }
+            .block:hover{
+                color: black;
+                box-shadow: 5px 5px 8px black;
+            }
+            .main{
+                width: auto;
+                height: auto;
+            }
+            .login{
+                width: 100%;
+                position: fixed;
+                top: 300px;
+                text-align: center;
+                font-size: 30px;
+                font-family: Arial, Helvetica, sans-serif;
+            }
+            .text_2{
+                position: fixed;
+                top: 150px;
+                left: 50px;
+            }
+            #submit{
+                position: relative;
+                font-size: 30px;
+                font-family: Arial, Helvetica, sans-serif;
+                width: 100px;
+                height: 200px;
+                text-align: center;
+            }
+        </style>
     </head>
     <body>
-        <div>
-          Microblog: <a href="/index">Home</a> 
-          <a href="/login">Login</a> 
+        <div class="top">
+            <h1 class="text_1">
+                Hello, {{user.username}}. Welcome to finance Manager.
+            </h1>
+            <p id="date"></p>
+            <div class="to_left"><a class="to_left" href="/index">Home</a></div>
+            <div class="to_left"><a class="to_left" href="/login">Login</a></div>
+            <div class="to_left"><a class="to_left" href="/chart">Chart</a></div>
         </div>
-        <hr>
         {% block content %}{% endblock %}
     </body>
+    <script>
+        n =  new Date();
+        y = n.getFullYear();
+        m = n.getMonth() + 1;
+        d = n.getDate();
+        document.getElementById("date").innerHTML = m + "/" + d + "/" + y;
+    </script>
 </html>
