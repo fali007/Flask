@@ -121,9 +121,6 @@ def create_figure():
         amount.append(row[2])
         date.append(row[1])
     cursor.close()
-    # axis = fig.add_subplot(1, 1, 1)
-    # axis.plot(date,amount)
-
     y=DB()
     cursor=y.conn.cursor()
     cursor.execute('SELECT * FROM income')
@@ -138,3 +135,38 @@ def create_figure():
     axis = fig.add_subplot(1, 1, 1)
     axis.plot(date,amount,date_e,amount_e)
     return fig
+
+@app.route('/validate')
+def validate():
+    if b.var==False:
+        return redirect('/login')
+    user = {'username': 'Felix'}
+    i=DB()
+    cursor=i.conn.cursor()
+    cursor.execute('SELECT * FROM income')
+    rows=cursor.fetchall()
+    date={}
+    for row in rows:
+        if row[1] in date:
+            date[row[1]].append(row[2])
+        else:
+            date[row[1]]=[]
+            date[row[1]].append(row[2])
+    cursor.close()
+    e=DB_e()
+    cursor=e.conn.cursor()
+    cursor.execute('SELECT * FROM expense')
+    rows=cursor.fetchall()
+    date_e={}
+    for row in rows:
+        if row[1] in date_e:
+            date_e[row[1]].append(row[2])
+        else:
+            date_e[row[1]]=[]
+            date_e[row[1]].append(row[2])
+    cursor.close()
+    for i in date:
+        date[i]=sum(date[i])
+    for i in date_e:
+        date_e[i]=sum(date_e[i])
+    return render_template('validate.html', title='Home', user=user,date=date,date_e=date_e,len=len(date))

@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="login">
+    <div class="tab">Date
+    {%for i in date%} 
+        <li>{{i}}</li> 
+    {%endfor%} 
+</div>
+<div class="tab">Income
+    {%for i in date%} 
+        <li>{{date[i]}}</li> 
+    {%endfor%}
+</div>
+
+<div class="tab">Expense
+    {%for i in date%} 
+        <li>{{date_e[i]}}</li> 
+    {%endfor%}
+</div>
+</div>
+{% endblock %}

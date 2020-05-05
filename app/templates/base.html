@@ -32,6 +32,16 @@
                 padding-right: 100px;
                 font-family: Arial, Helvetica, sans-serif;
             }
+            .to_lef{
+                position: relative;
+                float: right;
+                font-size: 20px;
+                line-height: 100px;
+                color: white;
+                text-decoration: none;
+                padding-right: 30px;
+                font-family: Arial, Helvetica, sans-serif;
+            }
             #date{
                 padding-top: 4px;
                 z-index: 100;
@@ -90,6 +100,11 @@
                 top: 150px;
                 left: 50px;
             }
+            .tab{
+                float: left;
+                width: 33%;
+                height: auto;
+            }
             #submit{
                 position: relative;
                 font-size: 30px;
@@ -107,8 +122,9 @@
             </h1>
             <p id="date"></p>
             <div class="to_left"><a class="to_left" href="/index">Home</a></div>
-            <div class="to_left"><a class="to_left" href="/login">Login</a></div>
-            <div class="to_left"><a class="to_left" href="/chart">Chart</a></div>
+            <div class="to_lef"><a class="to_lef" href="/login">Login</a></div>
+            <div class="to_lef"><a class="to_lef" href="/chart">Chart</a></div>
+            <div class="to_lef"><a class="to_lef" href="/validate">Validate</a></div>
         </div>
         {% block content %}{% endblock %}
     </body>
