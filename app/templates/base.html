@@ -102,7 +102,7 @@
             }
             .tab{
                 float: left;
-                width: 33%;
+                width: 25%;
                 height: auto;
             }
             #submit{
@@ -112,6 +112,11 @@
                 width: 100px;
                 height: 200px;
                 text-align: center;
+            }
+            .down{
+                position: fixed;
+                bottom: 20px;
+                left: 20px;
             }
         </style>
     </head>
@@ -125,6 +130,10 @@
             <div class="to_lef"><a class="to_lef" href="/login">Login</a></div>
             <div class="to_lef"><a class="to_lef" href="/chart">Chart</a></div>
             <div class="to_lef"><a class="to_lef" href="/validate">Validate</a></div>
+        </div>
+        <div style="position: fixed;top: 100px;right: 20px;">
+            <h3>Reminders:</h3>
+            <p>**Take for of bank charges.</p>
         </div>
         {% block content %}{% endblock %}
     </body>

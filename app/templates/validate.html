@@ -12,11 +12,21 @@
         <li>{{date[i]}}</li> 
     {%endfor%}
 </div>
-
+<div class="tab">Date
+    {%for i in date_e%} 
+        <li>{{i}}</li> 
+    {%endfor%} 
+</div>
 <div class="tab">Expense
-    {%for i in date%} 
+    {%for i in date_e%} 
         <li>{{date_e[i]}}</li> 
     {%endfor%}
 </div>
+</div>
+<div class="down">
+    <p>Total Income: {{net_income}}</p><br>
+    <p>Total Expense: {{net_expense}}</p><br>
+    <p>Funds: {{net_income*(1/5)+3406}}</p><br>
+    <p>Savings: {{net_income*(3/10)}}</p>
 </div>
 {% endblock %}

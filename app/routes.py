@@ -153,6 +153,7 @@ def validate():
             date[row[1]]=[]
             date[row[1]].append(row[2])
     cursor.close()
+
     e=DB_e()
     cursor=e.conn.cursor()
     cursor.execute('SELECT * FROM expense')
@@ -165,8 +166,17 @@ def validate():
             date_e[row[1]]=[]
             date_e[row[1]].append(row[2])
     cursor.close()
+
     for i in date:
         date[i]=sum(date[i])
+    net_income=0
+    for i in date:
+        net_income+=date[i]
+
     for i in date_e:
         date_e[i]=sum(date_e[i])
-    return render_template('validate.html', title='Home', user=user,date=date,date_e=date_e,len=len(date))
+    net_expense=0
+    for i in date_e:
+        net_expense+=date_e[i]
+    print(date_e)
+    return render_template('validate.html', title='Home', user=user,date=date,date_e=date_e,len=len(date),net_income=net_income,net_expense=net_expense)
